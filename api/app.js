@@ -17,13 +17,7 @@ app.use(express.json());
 //* recupere tout les argonautes
 app.get('/api/argonaute', (req, res) => {
     Argonaute.find()
-        .then(Argonautes => {
-            if (Argonautes.length !== 0) {
-                res.status(200).json(Argonautes)
-            } else {
-                res.status(200).json({ message: "Aucun argonaute sur la list" })
-            }
-        })
+        .then(Argonautes => res.status(200).json(Argonautes))
         .catch(err => res.status(500).json({ err }))
 })
 
@@ -34,7 +28,7 @@ app.post('/api/argonaute', (req, res) => {
         name: req.body.name
     })
     argonaute.save()
-        .then(() => res.status(201).json({ message: `${argonaute.name} a été ajouté sur la liste` }))
+        .then((argonaute) => res.status(201).json(argonaute))
         .catch(err => res.status(500).json(err.errors.name.message))
 
 })
