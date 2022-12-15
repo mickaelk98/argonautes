@@ -29,7 +29,7 @@ app.post('/api/argonaute', (req, res) => {
     })
     argonaute.save()
         .then((argonaute) => res.status(201).json(argonaute))
-        .catch(err => res.status(500).json(err.errors.name.message))
+        .catch(err => res.status(400).json({ message: err.errors.name.message }))
 
 })
 

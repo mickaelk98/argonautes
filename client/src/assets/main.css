@@ -3,12 +3,29 @@
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+ 
+}
+
+
+.app-container {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas: 
+  "header"
+  "main"
+  "footer"
+  ;
+  grid-template-columns: 1fr;
+  grid-template-rows: 160px auto 100px;
 }
 
 header {
   background: #f4f4f4;
   text-align: center;
   padding: 2em;
+  grid-area: header;
 }
 
 
@@ -34,6 +51,7 @@ main {
   max-width: 960px;
   margin: 0 auto;
   height: auto;
+  grid-area: main;
 }
 
 .new-member-form {
@@ -43,9 +61,11 @@ main {
 
 .menber-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15PX 0;
   padding: 10px;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .member-item {
@@ -54,9 +74,15 @@ main {
 
 
 footer {
+  grid-area: footer;
   margin-top: 2em;
   text-align: center;
   color: #fff;
   background: #f76c6c;
   padding: 0.25em 0;
+}
+
+.error {
+  color: #e74c3c;
+  text-align: center;
 }
